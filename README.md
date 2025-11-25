@@ -1,5 +1,5 @@
 # 📘 Task 8: Blog Layout Using Bootstrap 5  
-This project is created as part of the **Web Development Internship - Task 8**, where the objective was to build a **simple and responsive blog layout** using **Bootstrap 5 CDN**.
+This project is created as part of the **Web Development **, where the objective was to build a **simple and responsive blog layout** using **Bootstrap 5 CDN**.
 
 The project includes a responsive navbar, blog cards, hero section, footer with social icons, and custom styling using Bootstrap utility classes.
 
