@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Premium Blog — Modern UI</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="light">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <span class="brand-mark">MB</span>
+        <span class="brand-text">MyBlog</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMain">
+        <form id="searchForm" class="d-flex ms-auto me-3" role="search" onsubmit="return false;">
+          <input id="searchInput" class="form-control me-2" type="search" placeholder="Search posts, tags..." aria-label="Search">
+          <button id="searchBtn" class="btn btn-outline-primary" type="button"><i class="fa fa-search"></i></button>
+        </form>
+
+        <ul class="navbar-nav align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#posts">Posts</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item ms-lg-3">
+            <!-- Dark mode toggle -->
+            <button id="themeToggle" class="btn btn-outline-dark" title="Toggle dark mode">
+              <i class="fa fa-moon"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO / CAROUSEL -->
+  <header class="hero">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" style="background-image:url('https://picsum.photos/1400/500?grayscale&1')">
+          <div class="carousel-caption d-md-block text-start">
+            <h2 class="display-5">Modern Thoughts. Fresh Ideas.</h2>
+            <p class="lead">Curated articles about tech, travel, and lifestyle — designed beautifully.</p>
+            <a href="#posts" class="btn btn-primary btn-lg">Explore Posts</a>
+          </div>
+        </div>
+
+        <div class="carousel-item" style="background-image:url('https://picsum.photos/1400/500?2')">
+          <div class="carousel-caption d-md-block text-start">
+            <h2 class="display-5">Travel Guides & Stories</h2>
+            <p class="lead">Discover hidden gems and practical tips from real travelers.</p>
+            <a href="#posts" class="btn btn-success btn-lg">See Travel</a>
+          </div>
+        </div>
+
+        <div class="carousel-item" style="background-image:url('https://picsum.photos/1400/500?3')">
+          <div class="carousel-caption d-md-block text-start">
+            <h2 class="display-5">Health & Wellness</h2>
+            <p class="lead">Small habits, big changes — start today.</p>
+            <a href="#posts" class="btn btn-warning btn-lg text-white">Read Health Tips</a>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN LAYOUT: SIDEBAR + POSTS -->
+  <main class="container my-5" id="posts">
+    <div class="row">
+
+      <!-- SIDEBAR -->
+      <aside class="col-lg-3 mb-4">
+        <div class="card sticky-top sidebar-card">
+          <div class="card-body">
+            <h5 class="card-title">Categories</h5>
+            <div class="list-group list-group-flush mb-3" id="categoryList">
+              <button class="list-group-item list-group-item-action active" data-cat="all">All</button>
+              <button class="list-group-item list-group-item-action" data-cat="tech">Technology</button>
+              <button class="list-group-item list-group-item-action" data-cat="travel">Travel</button>
+              <button class="list-group-item list-group-item-action" data-cat="health">Health</button>
+              <button class="list-group-item list-group-item-action" data-cat="design">Design</button>
+            </div>
+
+            <h6 class="mb-2">Popular Tags</h6>
+            <div class="mb-3">
+              <button class="btn btn-sm btn-outline-secondary me-1 mb-1 tag-btn" data-tag="AI">AI</button>
+              <button class="btn btn-sm btn-outline-secondary me-1 mb-1 tag-btn" data-tag="IoT">IoT</button>
+              <button class="btn btn-sm btn-outline-secondary me-1 mb-1 tag-btn" data-tag="Wellness">Wellness</button>
+              <button class="btn btn-sm btn-outline-secondary me-1 mb-1 tag-btn" data-tag="Travel">Travel</button>
+            </div>
+
+            <h6 class="mb-2">About the Author</h6>
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://i.pravatar.cc/60" alt="author" class="rounded-circle author-img">
+              <div>
+                <div class="fw-bold">Suhana Kurhade</div>
+                <div class="text-muted small">Writer • Traveler • Maker</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- POSTS GRID -->
+      <section class="col-lg-9">
+        <div class="row g-4" id="postsGrid">
+
+          <!-- Card template (multiple cards) -->
+          <!-- Card 1 -->
+          <article class="col-md-6 col-xl-4 post-card" data-category="tech" data-tags="AI,IoT" >
+            <div class="card h-100 shadow-sm post-card-inner">
+              <img class="card-img-top" src="https://picsum.photos/600/350?random=11" alt="">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <small class="badge bg-primary">Technology</small>
+                  <small class="text-muted">Oct 12, 2025</small>
+                </div>
+                <h5 class="card-title">The Future of Everyday AI</h5>
+                <p class="card-text text-muted mb-3">How small AI assistants will change our daily routines and devices.</p>
+                <div class="mt-auto">
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm read-btn" data-title="The Future of Everyday AI" data-img="https://picsum.photos/1200/600?random=11" data-content="Longer article content about AI...">Read More</button>
+                    <button class="btn btn-outline-secondary btn-sm save-btn"><i class="fa-regular fa-bookmark"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="col-md-6 col-xl-4 post-card" data-category="travel" data-tags="Travel">
+            <div class="card h-100 shadow-sm post-card-inner">
+              <img class="card-img-top" src="https://picsum.photos/600/350?random=22" alt="">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <small class="badge bg-success">Travel</small>
+                  <small class="text-muted">Sep 28, 2025</small>
+                </div>
+                <h5 class="card-title">7 Hidden Beaches to Visit</h5>
+                <p class="card-text text-muted mb-3">Sun, sand, and secret coves — pack light and travel smart.</p>
+                <div class="mt-auto">
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-success btn-sm read-btn" data-title="7 Hidden Beaches to Visit" data-img="https://picsum.photos/1200/600?random=22" data-content="Longer article content about travel...">Read More</button>
+                    <button class="btn btn-outline-secondary btn-sm save-btn"><i class="fa-regular fa-bookmark"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="col-md-6 col-xl-4 post-card" data-category="health" data-tags="Wellness">
+            <div class="card h-100 shadow-sm post-card-inner">
+              <img class="card-img-top" src="https://picsum.photos/600/350?random=33" alt="">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <small class="badge bg-warning text-dark">Health</small>
+                  <small class="text-muted">Aug 14, 2025</small>
+                </div>
+                <h5 class="card-title">Daily Habits for Better Energy</h5>
+                <p class="card-text text-muted mb-3">Small routines that lead to big improvements in energy and focus.</p>
+                <div class="mt-auto">
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-warning btn-sm read-btn" data-title="Daily Habits for Better Energy" data-img="https://picsum.photos/1200/600?random=33" data-content="Longer article content about health...">Read More</button>
+                    <button class="btn btn-outline-secondary btn-sm save-btn"><i class="fa-regular fa-bookmark"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="col-md-6 col-xl-4 post-card" data-category="design" data-tags="Design">
+            <div class="card h-100 shadow-sm post-card-inner">
+              <img class="card-img-top" src="https://picsum.photos/600/350?random=44" alt="">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <small class="badge bg-info text-dark">Design</small>
+                  <small class="text-muted">Jul 01, 2025</small>
+                </div>
+                <h5 class="card-title">Minimal UI Patterns</h5>
+                <p class="card-text text-muted mb-3">Design decisions that make interfaces feel lighter and faster.</p>
+                <div class="mt-auto">
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-info btn-sm read-btn" data-title="Minimal UI Patterns" data-img="https://picsum.photos/1200/600?random=44" data-content="Longer article content about design...">Read More</button>
+                    <button class="btn btn-outline-secondary btn-sm save-btn"><i class="fa-regular fa-bookmark"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="col-md-6 col-xl-4 post-card" data-category="tech" data-tags="IoT">
+            <div class="card h-100 shadow-sm post-card-inner">
+              <img class="card-img-top" src="https://picsum.photos/600/350?random=55" alt="">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <small class="badge bg-primary">Technology</small>
+                  <small class="text-muted">Jun 20, 2025</small>
+                </div>
+                <h5 class="card-title">IoT at Home — Practical Ideas</h5>
+                <p class="card-text text-muted mb-3">Build small IoT projects that make daily life easier.</p>
+                <div class="mt-auto">
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm read-btn" data-title="IoT at Home — Practical Ideas" data-img="https://picsum.photos/1200/600?random=55" data-content="Longer article content about IoT...">Read More</button>
+                    <button class="btn btn-outline-secondary btn-sm save-btn"><i class="fa-regular fa-bookmark"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="col-md-6 col-xl-4 post-card" data-category="travel" data-tags="Travel">
+            <div class="card h-100 shadow-sm post-card-inner">
+              <img class="card-img-top" src="https://picsum.photos/600/350?random=66" alt="">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <small class="badge bg-success">Travel</small>
+                  <small class="text-muted">May 11, 2025</small>
+                </div>
+                <h5 class="card-title">City Escapes for a Weekend</h5>
+                <p class="card-text text-muted mb-3">Short city trips to refresh without taking long vacations.</p>
+                <div class="mt-auto">
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-success btn-sm read-btn" data-title="City Escapes for a Weekend" data-img="https://picsum.photos/1200/600?random=66" data-content="Longer article content about travel...">Read More</button>
+                    <button class="btn btn-outline-secondary btn-sm save-btn"><i class="fa-regular fa-bookmark"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 7 -->
+          <article class="col-md-6 col-xl-4 post-card" data-category="health" data-tags="Wellness">
+            <div class="card h-100 shadow-sm post-card-inner">
+              <img class="card-img-top" src="https://picsum.photos/600/350?random=77" alt="">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <small class="badge bg-warning text-dark">Health</small>
+                  <small class="text-muted">Apr 02, 2025</small>
+                </div>
+                <h5 class="card-title">Mindful Morning Routines</h5>
+                <p class="card-text text-muted mb-3">Routines that help you start strong and stay calm through the day.</p>
+                <div class="mt-auto">
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-warning btn-sm read-btn" data-title="Mindful Morning Routines" data-img="https://picsum.photos/1200/600?random=77" data-content="Longer article content about routines...">Read More</button>
+                    <button class="btn btn-outline-secondary btn-sm save-btn"><i class="fa-regular fa-bookmark"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 8 -->
+          <article class="col-md-6 col-xl-4 post-card" data-category="design" data-tags="Design">
+            <div class="card h-100 shadow-sm post-card-inner">
+              <img class="card-img-top" src="https://picsum.photos/600/350?random=88" alt="">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <small class="badge bg-info text-dark">Design</small>
+                  <small class="text-muted">Mar 19, 2025</small>
+                </div>
+                <h5 class="card-title">Color Systems that Work</h5>
+                <p class="card-text text-muted mb-3">A guide to color palettes and accessibility-friendly choices.</p>
+                <div class="mt-auto">
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-info btn-sm read-btn" data-title="Color Systems that Work" data-img="https://picsum.photos/1200/600?random=88" data-content="Longer article content about color...">Read More</button>
+                    <button class="btn btn-outline-secondary btn-sm save-btn"><i class="fa-regular fa-bookmark"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 9 -->
+          <article class="col-md-6 col-xl-4 post-card" data-category="tech" data-tags="AI">
+            <div class="card h-100 shadow-sm post-card-inner">
+              <img class="card-img-top" src="https://picsum.photos/600/350?random=99" alt="">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <small class="badge bg-primary">Technology</small>
+                  <small class="text-muted">Feb 05, 2025</small>
+                </div>
+                <h5 class="card-title">Small AI Tools Worth Trying</h5>
+                <p class="card-text text-muted mb-3">Handy AI utilities to speed up everyday tasks — simple and free.</p>
+                <div class="mt-auto">
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm read-btn" data-title="Small AI Tools Worth Trying" data-img="https://picsum.photos/1200/600?random=99" data-content="Longer article content about AI tools...">Read More</button>
+                    <button class="btn btn-outline-secondary btn-sm save-btn"><i class="fa-regular fa-bookmark"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- AUTHOR + COMMENTS SECTION -->
+  <section class="container my-5" id="about">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="card p-4 author-card">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <img src="https://i.pravatar.cc/100" class="rounded-circle" alt="author">
+            <div>
+              <h5 class="mb-0">Suhana Kurhade</h5>
+              <small class="text-muted">Founder • Writer</small>
+            </div>
+          </div>
+          <p class="text-muted small">Suhana writes about tech, travel, and everyday productivity. She loves building simple projects and sharing practical tips.</p>
+          <div class="d-flex gap-2">
+            <a href="#" class="btn btn-outline-primary btn-sm">Follow</a>
+            <a href="#" class="btn btn-outline-secondary btn-sm">Contact</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="card p-4 comments-card">
+          <h5>Comments</h5>
+          <div id="commentsList" class="mb-3"></div>
+
+          <form id="commentForm">
+            <div class="mb-2">
+              <input id="commentName" class="form-control" placeholder="Your name" required>
+            </div>
+            <div class="mb-2">
+              <textarea id="commentText" class="form-control" placeholder="Write a comment..." rows="3" required></textarea>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-primary" type="submit">Post Comment</button>
+              <button class="btn btn-outline-secondary" type="button" id="clearComments">Clear</button>
+            </div>
+            <div class="form-text mt-2">Comments are saved locally on your browser (for demo).</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREMIUM FOOTER -->
+  <footer class="site-footer mt-5">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <h5>MyBlog</h5>
+          <p class="text-muted small">A modern blog template built with Bootstrap 5.</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h6>Contact</h6>
+          <p class="small text-muted mb-1"><i class="fa fa-envelope me-2"></i>hello@myblog.example</p>
+          <p class="small text-muted"><i class="fa fa-phone me-2"></i>+91 98765 43210</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h6>Follow</h6>
+          <div class="social-footer mt-2">
+            <a class="me-2" href="#"><i class="fa fa-facebook fa-lg"></i></a>
+            <a class="me-2" href="#"><i class="fa fa-instagram fa-lg"></i></a>
+            <a class="me-2" href="#"><i class="fa fa-github fa-lg"></i></a>
+            <a class="me-2" href="#"><i class="fa fa-linkedin fa-lg"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4 small text-muted">© 2025 MyBlog • Built with Bootstrap</div>
+    </div>
+  </footer>
+
+  <!-- MODAL: READ MORE -->
+  <div class="modal fade" id="readModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="modalTitle" class="modal-title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img id="modalImg" src="" class="img-fluid mb-3 rounded">
+          <p id="modalContent" class="text-muted"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-primary">Share</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Inline JS for interactions -->
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      document.body.classList.toggle('light');
+      const icon = themeToggle.querySelector('i');
+      icon.classList.toggle('fa-moon');
+      icon.classList.toggle('fa-sun');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    });
+    // Load theme from localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark');
+      document.body.classList.remove('light');
+      themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+    }
+
+    // Search & filter
+    const searchInput = document.getElementById('searchInput');
+    const postsGrid = document.getElementById('postsGrid');
+    function filterPosts(query = '', category = 'all', tag = '') {
+      const cards = Array.from(document.querySelectorAll('.post-card'));
+      const q = query.trim().toLowerCase();
+      cards.forEach(card => {
+        const title = card.querySelector('.card-title').textContent.toLowerCase();
+        const text = card.querySelector('.card-text').textContent.toLowerCase();
+        const cats = card.dataset.category;
+        const tags = card.dataset.tags.toLowerCase();
+        const matchQuery = !q || title.includes(q) || text.includes(q) || tags.includes(q);
+        const matchCat = category === 'all' || cats === category;
+        const matchTag = !tag || tags.includes(tag.toLowerCase());
+        if (matchQuery && matchCat && matchTag) card.style.display = '';
+        else card.style.display = 'none';
+      });
+    }
+
+    document.getElementById('searchBtn').addEventListener('click', () => {
+      filterPosts(searchInput.value);
+    });
+    searchInput.addEventListener('keyup', (e) => {
+      filterPosts(e.target.value);
+    });
+
+    // Category buttons
+    document.querySelectorAll('#categoryList button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('#categoryList button').forEach(b => b.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        const cat = e.currentTarget.dataset.cat;
+        filterPosts(searchInput.value, cat);
+      });
+    });
+
+    // Tag buttons
+    document.querySelectorAll('.tag-btn').forEach(t => {
+      t.addEventListener('click', () => {
+        filterPosts(searchInput.value, 'all', t.dataset.tag);
+      });
+    });
+
+    // Read more modal
+    const readButtons = document.querySelectorAll('.read-btn');
+    const readModal = new bootstrap.Modal(document.getElementById('readModal'));
+    readButtons.forEach(b => {
+      b.addEventListener('click', () => {
+        document.getElementById('modalTitle').textContent = b.dataset.title;
+        document.getElementById('modalImg').src = b.dataset.img;
+        document.getElementById('modalContent').textContent = b.dataset.content;
+        readModal.show();
+      });
+    });
+
+    // Save bookmark (demo)
+    document.querySelectorAll('.save-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('saved');
+        btn.querySelector('i').classList.toggle('fa-bookmark');
+        btn.querySelector('i').classList.toggle('fa-bookmark-solid');
+      });
+    });
+
+    // IntersectionObserver for scroll animations
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in-view');
+      });
+    }, {threshold: 0.15});
+    document.querySelectorAll('.post-card-inner, .author-card, .comments-card, .sidebar-card').forEach(el => io.observe(el));
+
+    // Comments (localStorage)
+    const commentsKey = 'myblog_comments_v1';
+    const commentsList = document.getElementById('commentsList');
+    function loadComments() {
+      const arr = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+      commentsList.innerHTML = arr.map(c => `
+        <div class="comment mb-3">
+          <div class="d-flex justify-content-between">
+            <div><strong>${escapeHtml(c.name)}</strong> <small class="text-muted">• ${new Date(c.time).toLocaleString()}</small></div>
+          </div>
+          <div class="mt-1">${escapeHtml(c.text)}</div>
+        </div>
+      `).join('');
+    }
+    function escapeHtml(unsafe) { return unsafe.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');}
+    loadComments();
+    document.getElementById('commentForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('commentName').value.trim();
+      const text = document.getElementById('commentText').value.trim();
+      if (!name || !text) return;
+      const arr = JSON.parse(localStorage.getItem(commentsKey) || '[]');
+      arr.unshift({name, text, time: Date.now()});
+      localStorage.setItem(commentsKey, JSON.stringify(arr));
+      document.getElementById('commentName').value = '';
+      document.getElementById('commentText').value = '';
+      loadComments();
+    });
+    document.getElementById('clearComments').addEventListener('click', () => {
+      localStorage.removeItem(commentsKey);
+      loadComments();
+    });
+
+    // Small UX: pressing Enter in search triggers search
+    document.getElementById('searchInput').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); filterPosts(searchInput.value); }
+    });
+
+    // Initial filter (show all)
+    filterPosts('');
+
+  </script>
+</body>
+</html>
